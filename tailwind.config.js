@@ -5,6 +5,9 @@ module.exports = {
     extend: {
       backgroundImage: {
         'hero-background': "url('C:/Users/Deliciouz/Documents/react-projects/online-store/src/assets/marcus-loke-xXJ6utyoSw0-unsplash (1).jpg')"
+      },
+      fontFamily: {
+        logoFont: "'Are You Serious', cursive"
       }
     },
   },

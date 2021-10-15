@@ -1,13 +1,22 @@
 import './index.css';
-import Nav from './components/Nav';
+import Hero from './components/Hero';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import ProductList from './components/ProductList'
 
 function App() {
   return (
-    <div className="App">
-      <Nav />
-      <h1 className="primary">Welcome to Store</h1>
-
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Switch>
+          <Route exact path="/">
+            <Hero />
+          </Route>
+          <Route path="/products">
+            <ProductList />
+          </Route>
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 
