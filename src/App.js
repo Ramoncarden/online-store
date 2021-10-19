@@ -2,6 +2,7 @@ import './index.css';
 import Hero from './components/Hero';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import ProductList from './components/ProductList'
+import ProductDetails from './components/ProductDetails';
 
 function App() {
   return (
@@ -11,8 +12,11 @@ function App() {
           <Route exact path="/">
             <Hero />
           </Route>
-          <Route path="/products">
+          <Route exact path="/products">
             <ProductList />
+          </Route>
+          <Route path="/products/:id">
+            <ProductDetails />
           </Route>
         </Switch>
       </div>
