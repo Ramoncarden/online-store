@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/Ramoncarden/online-store/static/css/main.d62381c2.chunk.css",
-    "main.js": "/Ramoncarden/online-store/static/js/main.8db9979f.chunk.js",
-    "main.js.map": "/Ramoncarden/online-store/static/js/main.8db9979f.chunk.js.map",
+    "main.js": "/Ramoncarden/online-store/static/js/main.a31ed85a.chunk.js",
+    "main.js.map": "/Ramoncarden/online-store/static/js/main.a31ed85a.chunk.js.map",
     "runtime-main.js": "/Ramoncarden/online-store/static/js/runtime-main.9b6a09e6.js",
     "runtime-main.js.map": "/Ramoncarden/online-store/static/js/runtime-main.9b6a09e6.js.map",
-    "static/js/2.357150c8.chunk.js": "/Ramoncarden/online-store/static/js/2.357150c8.chunk.js",
-    "static/js/2.357150c8.chunk.js.map": "/Ramoncarden/online-store/static/js/2.357150c8.chunk.js.map",
+    "static/js/2.a467afbb.chunk.js": "/Ramoncarden/online-store/static/js/2.a467afbb.chunk.js",
+    "static/js/2.a467afbb.chunk.js.map": "/Ramoncarden/online-store/static/js/2.a467afbb.chunk.js.map",
     "static/js/3.445fea47.chunk.js": "/Ramoncarden/online-store/static/js/3.445fea47.chunk.js",
     "static/js/3.445fea47.chunk.js.map": "/Ramoncarden/online-store/static/js/3.445fea47.chunk.js.map",
     "index.html": "/Ramoncarden/online-store/index.html",
     "static/css/main.d62381c2.chunk.css.map": "/Ramoncarden/online-store/static/css/main.d62381c2.chunk.css.map",
-    "static/js/2.357150c8.chunk.js.LICENSE.txt": "/Ramoncarden/online-store/static/js/2.357150c8.chunk.js.LICENSE.txt",
+    "static/js/2.a467afbb.chunk.js.LICENSE.txt": "/Ramoncarden/online-store/static/js/2.a467afbb.chunk.js.LICENSE.txt",
     "static/media/index.css": "/Ramoncarden/online-store/static/media/marcus-loke-xXJ6utyoSw0-unsplash (1).edbee42e.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.9b6a09e6.js",
-    "static/js/2.357150c8.chunk.js",
+    "static/js/2.a467afbb.chunk.js",
     "static/css/main.d62381c2.chunk.css",
-    "static/js/main.8db9979f.chunk.js"
+    "static/js/main.a31ed85a.chunk.js"
   ]
 }
