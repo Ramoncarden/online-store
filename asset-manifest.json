@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Ramoncarden/online-store/static/css/main.d62381c2.chunk.css",
-    "main.js": "/Ramoncarden/online-store/static/js/main.a31ed85a.chunk.js",
-    "main.js.map": "/Ramoncarden/online-store/static/js/main.a31ed85a.chunk.js.map",
+    "main.js": "/Ramoncarden/online-store/static/js/main.072f883c.chunk.js",
+    "main.js.map": "/Ramoncarden/online-store/static/js/main.072f883c.chunk.js.map",
     "runtime-main.js": "/Ramoncarden/online-store/static/js/runtime-main.9b6a09e6.js",
     "runtime-main.js.map": "/Ramoncarden/online-store/static/js/runtime-main.9b6a09e6.js.map",
     "static/js/2.a467afbb.chunk.js": "/Ramoncarden/online-store/static/js/2.a467afbb.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.9b6a09e6.js",
     "static/js/2.a467afbb.chunk.js",
     "static/css/main.d62381c2.chunk.css",
-    "static/js/main.a31ed85a.chunk.js"
+    "static/js/main.072f883c.chunk.js"
   ]
 }
