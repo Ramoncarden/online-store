@@ -1,86 +1,66 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 const Cart = (props) => {
-  const { cartItems, onAddToCart, onRemoveCartItem } = props;
+  const { cartItems, onAddToCart, onRemoveCartItem, resetCart, removeSingleItem, checkout } = props;
+  const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
+  const taxPrice = itemsPrice * 0.0625;
+  const totalPrice = itemsPrice + taxPrice;
+  const history = useHistory()
+
+  // push to confirmation page.
+  const submitOrder = () => {
+    if (cartItems.length) {
+      history.push('/confirmation')
+    }
+  }
 
   return (
     <div>
       <div className="flex justify-center my-6">
         <div className="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
           <div className="flex-1">
-            <table className="w-full text-sm lg:text-base" cellspacing="0">
+            <table className="w-full text-sm lg:text-base" cellSpacing="0">
               <thead>
                 <tr className="h-12 uppercase">
                   <th className="hidden md:table-cell"></th>
-                  <th className="text-left">Product</th>
-                  <th className="lg:text-right text-left pl-5 lg:pl-0">
+                  <th className="text-left max-w-md">Product</th>
+                  <th className="lg:text-center text-left pl-5 lg:pl-0">
                     <span className="lg:hidden" title="Quantity">Qty</span>
-                    <span className="hidden lg:inline">Quantity</span>
+                    <span className="hidden lg:inline text-left">Quantity</span>
                   </th>
                   <th className="hidden text-right md:table-cell">Unit price</th>
                   <th className="text-right">Total price</th>
                 </tr>
               </thead>
               <tbody>
-                {/* <tr>
-                  <td className="hidden pb-4 md:table-cell">
-                    <a href="#">
-                      <img src="https://limg.app/i/Calm-Cormorant-Catholic-Pinball-Blaster-yM4oub.jpeg" className="w-20 rounded" alt="Thumbnail" />
-                    </a>
-                  </td>
-                  <td>
-                    <a href="#">
-                      <p className="mb-2 md:ml-4">Earphone</p>
-                      <form action="" method="POST">
-                        <button type="submit" className="text-gray-700 md:ml-4">
-                          <small className="text-red-500">(Remove item)</small>
-                        </button>
-                      </form>
-                    </a>
-                  </td>
-                  <td className="justify-center md:justify-end md:flex mt-6">
-                    <div className="w-20 h-10">
-                      <div className="relative flex flex-row w-full h-8">
-                        <input type="number" value="2"
-                          className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black" />
-                      </div>
-                    </div>
-                  </td>
-                  <td className="hidden text-right md:table-cell">
-                    <span className="text-sm lg:text-base font-medium">
-                      $10.00
-                    </span>
-                  </td>
-                  <td className="text-right">
-                    <span className="text-sm lg:text-base font-medium">
-                      $20.00
-                    </span>
-                  </td>
-                </tr> */}
-                {cartItems.map((item) => {
+                {cartItems.map((item) => (
                   <tr key={item.id}>
                     <td className="hidden pb-4 md:table-cell">
-                      <a href="#">
-                        <img src={item.image} className="w-20 rounded" alt="Thumbnail" />
-                      </a>
+                      <Link to={`products/${item.id}`}>
+                        <img src={item.image} className="w-20 rounded mb-3" alt="Thumbnail" />
+                      </Link>
                     </td>
                     <td>
-                      <p className="mb-2 md:ml-4">{item.name}</p>
-                      <form action="" method="POST">
-                        <button type="submit" className="text-gray-700 md:ml-4">
-                          <small>(Remove item)</small>
-                        </button>
-                      </form>
+                      <i className="text-gray-400 text-xs md:ml-3">(product id: {item.id})</i>
+                      <p className="mb-2 md:ml-3">{item.title}</p>
+                      <button onClick={() => removeSingleItem(item)} type="submit" className="text-gray-700 md:ml-4">
+                        <small className="text-red-500 hover:text-red-700">(Remove item)</small>
+                      </button>
                     </td>
-                    <td className="justify-center md:justify-end md:flex md:mt-4">
-                      <div className="w-20 h-10">
-                        <div className="relative flex flex-row w-full h-8">
-                          <button onClick={() => onRemoveCartItem(item)} className="bg-red-600">-</button>
-                          <span
-                            className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black">{item.qty}
-                          </span>
-                          <button onClick={() => onAddToCart(item)} className="bg-blue-200">+</button>
+
+                    <td className=" justify-end md:justify-end md:flex md:mt-4 md:table-cell h-10 w-12">
+                      <div className="custom-number-input">
+                        <label htmlFor="custom-input-number" className="w-full text-gray-700 text-sm font-semibold">
+                        </label>
+                        <div className="flex flex-row h-10 w-full rounded-lg bg-transparent">
+                          <button onClick={() => onRemoveCartItem(item)} data-action="decrement" className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
+                            <span className="m-auto text-2xl font-thin">−</span>
+                          </button>
+                          <input type="number" className="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700 outline-none" name="custom-input-number" readOnly value={item.qty} />
+                          <button onClick={() => onAddToCart(item)} data-action="increment" className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
+                            <span className="m-auto text-2xl font-thin">+</span>
+                          </button>
                         </div>
                       </div>
                     </td>
@@ -89,13 +69,14 @@ const Cart = (props) => {
                         {item.qty} x ${item.price.toFixed(2)}
                       </span>
                     </td>
+
                     <td className="text-right">
                       <span className="text-sm lg:text-base font-medium">
-                        ${item.price.toFixed(2)}
+                        ${(item.price * item.qty).toFixed(2)}
                       </span>
                     </td>
                   </tr>
-                })
+                ))
                 }
               </tbody>
             </table>
@@ -105,11 +86,13 @@ const Cart = (props) => {
                 Continue shopping
               </Link>
             </button>
-            <button className="text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded mt-3 -mb-1 ml-4">
+            <button onClick={resetCart} className="text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded mt-3 -mb-1 ml-4">
               Empty Cart
             </button>
 
             <hr className="pb-6 mt-6" />
+
+            {/* ************** Total calculations ****************** */}
 
             <div className="my-4 mt-6 -mx-2 lg:flex flex-row-reverse">
               <div className="lg:px-2 lg:w-1/2">
@@ -123,15 +106,15 @@ const Cart = (props) => {
                       Subtotal
                     </div>
                     <div className="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                      $148,827.53
+                      ${itemsPrice.toFixed(2)}
                     </div>
                   </div>
                   <div className="flex justify-between pt-4 border-b">
                     <div className="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
-                      New Subtotal
+                      Shipping
                     </div>
                     <div className="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                      $14,882.75
+                      FREE!
                     </div>
                   </div>
                   <div className="flex justify-between pt-4 border-b">
@@ -139,7 +122,7 @@ const Cart = (props) => {
                       Tax
                     </div>
                     <div className="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                      $2,976.55
+                      ${taxPrice.toFixed(2)}
                     </div>
                   </div>
                   <div className="flex justify-between pt-4 border-b">
@@ -147,15 +130,15 @@ const Cart = (props) => {
                       Total
                     </div>
                     <div className="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                      $17,859.30
+                      <strong>${totalPrice.toFixed(2)}</strong>
                     </div>
                   </div>
-                  <a href="#">
-                    <button className="flex justify-center w-full px-10 py-3 mt-6 font-medium text-white uppercase bg-green-700 rounded-full shadow item-center hover:bg-green-800 focus:shadow-outline focus:outline-none">
-                      <svg aria-hidden="true" data-prefix="far" data-icon="credit-card" className="w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M527.9 32H48.1C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48.1 48h479.8c26.6 0 48.1-21.5 48.1-48V80c0-26.5-21.5-48-48.1-48zM54.1 80h467.8c3.3 0 6 2.7 6 6v42H48.1V86c0-3.3 2.7-6 6-6zm467.8 352H54.1c-3.3 0-6-2.7-6-6V256h479.8v170c0 3.3-2.7 6-6 6zM192 332v40c0 6.6-5.4 12-12 12h-72c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h72c6.6 0 12 5.4 12 12zm192 0v40c0 6.6-5.4 12-12 12H236c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h136c6.6 0 12 5.4 12 12z" /></svg>
-                      <span className="ml-2 mt-5px">Checkout</span>
-                    </button>
-                  </a>
+
+                  <button onClick={() => { checkout(); submitOrder() }} className="flex justify-center w-full px-10 py-3 mt-6 font-medium text-white uppercase bg-green-700 rounded-full shadow item-center hover:bg-green-800 focus:shadow-outline focus:outline-none">
+                    <svg aria-hidden="true" data-prefix="far" data-icon="credit-card" className="w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M527.9 32H48.1C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48.1 48h479.8c26.6 0 48.1-21.5 48.1-48V80c0-26.5-21.5-48-48.1-48zM54.1 80h467.8c3.3 0 6 2.7 6 6v42H48.1V86c0-3.3 2.7-6 6-6zm467.8 352H54.1c-3.3 0-6-2.7-6-6V256h479.8v170c0 3.3-2.7 6-6 6zM192 332v40c0 6.6-5.4 12-12 12h-72c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h72c6.6 0 12 5.4 12 12zm192 0v40c0 6.6-5.4 12-12 12H236c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h136c6.6 0 12 5.4 12 12z" /></svg>
+                    <span className="ml-2 mt-5px">Checkout</span>
+                  </button>
+
                 </div>
               </div>
             </div>

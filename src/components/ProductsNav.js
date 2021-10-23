@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const ProductsNav = () => {
+const ProductsNav = (props) => {
+  const { countCartItems } = props;
+
   return (
     <div>
       <div x-data="{ cartOpen: false , isOpen: false }" className="bg-white">
@@ -17,21 +19,28 @@ const ProductsNav = () => {
               <Link to='/'>
                 <div className="flex items-center justify-center text-3xl font-bold font-logoFont text-green-800">
                   <svg className="w-10 h-10 mr-1 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"></path>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"></path>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"></path>
                   </svg>
                   Chic
                 </div>
               </Link>
+
+              {/* ********** cart link ************** */}
               <div className="flex items-center justify-end w-full">
                 <Link to="/cart">
-                  <button click="cartOpen = !cartOpen" className="text-gray-600 focus:outline-none mx-4 sm:mx-0">
+                  <button className="text-gray-600 focus:outline-none mx-4 sm:mx-0 relative flex">
                     <svg className="h-6 w-6 mt-2" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                       <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
                     </svg>
+                    {countCartItems ? (
+                      <span className="absolute right-0 top-0 rounded-full bg-red-600 w-4 h-4 top right p-0 m-0 text-white font-mono text-sm  leading-tight text-center">{countCartItems}
+                      </span>
+                    ) : (
+                      ''
+                    )}
                   </button>
                 </Link>
-
                 <div className="flex sm:hidden">
                   <button type="button" className="text-gray-600 hover:text-gray-500 focus:outline-none focus:text-gray-500" aria-label="toggle menu">
                     <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current">
@@ -41,10 +50,11 @@ const ProductsNav = () => {
                 </div>
               </div>
             </div>
+
             <nav className="sm:flex sm:justify-center sm:items-center mt-4">
               <div className="flex flex-col sm:flex-row">
                 <Link to="/" className="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0">Home</Link>
-                <Link to="/" className="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0">Shop</Link>
+                <Link to="/products" className="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0">Shop</Link>
                 <Link to="/" className="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0">Categories</Link>
                 <Link to="/" className="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0">Contact</Link>
                 <Link to="/" className="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0">About</Link>
