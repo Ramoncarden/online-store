@@ -10,7 +10,7 @@ const ProductList = () => {
   }, [])
 
   const getProducts = () => {
-    axios.get("http://localhost:8000/Products")
+    axios.get("https://fakestoreapi.com/products")
       .then((res) => {
         const allProducts = res.data;
         setData(allProducts);

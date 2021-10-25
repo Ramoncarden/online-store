@@ -1,6 +1,6 @@
 import './index.css';
 import Hero from './components/Hero';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { useState } from 'react';
 import ProductList from './components/ProductList'
 import ProductDetails from './components/ProductDetails';
@@ -59,42 +59,40 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Switch>
-          <Route exact path="/">
-            <Hero />
-          </Route>
-          <Route exact path="/products">
-            <ProductsNav countCartItems={cartItems.length} />
-            <ProductList />
-          </Route>
-          <Route path="/products/:id">
-            <ProductsNav cartItems={setCartItems} countCartItems={cartItems.length} />
-            <ProductDetails onAddToCart={onAddToCart} cartItems={cartItems} />
-          </Route>
-          <Route path="/cart">
-            <ProductsNav countCartItems={cartItems.length} />
-            <Cart
-              onAddToCart={onAddToCart}
-              cartItems={cartItems}
-              onRemoveCartItem={onRemoveCartItem}
-              resetCart={resetCart}
-              removeSingleItem={removeSingleItem}
-              checkout={checkout}
-            />
-          </Route>
-          <Route path="/confirmation">
-            <ProductsNav countCartItems={cartItems.length} />
-            <Confirmation getConfirmationNumber={getConfirmationNumber} />
-          </Route>
-          <Route path="*">
-            <ProductsNav />
-            <NotFound />
-          </Route>
-        </Switch>
-      </div>
-    </BrowserRouter>
+    <div className="App">
+      <Switch>
+        <Route exact path="/online-store">
+          <Hero />
+        </Route>
+        <Route path="/online-store/products">
+          <ProductsNav countCartItems={cartItems.length} />
+          <ProductList />
+        </Route>
+        <Route path="/online-store/products/:id">
+          <ProductsNav cartItems={setCartItems} countCartItems={cartItems.length} />
+          <ProductDetails onAddToCart={onAddToCart} cartItems={cartItems} />
+        </Route>
+        <Route path="/online-store/cart">
+          <ProductsNav countCartItems={cartItems.length} />
+          <Cart
+            onAddToCart={onAddToCart}
+            cartItems={cartItems}
+            onRemoveCartItem={onRemoveCartItem}
+            resetCart={resetCart}
+            removeSingleItem={removeSingleItem}
+            checkout={checkout}
+          />
+        </Route>
+        <Route path="/online-store/confirmation">
+          <ProductsNav countCartItems={cartItems.length} />
+          <Confirmation getConfirmationNumber={getConfirmationNumber} />
+        </Route>
+        <Route path="/online-store/*">
+          <ProductsNav />
+          <NotFound />
+        </Route>
+      </Switch>
+    </div>
   );
 }
 

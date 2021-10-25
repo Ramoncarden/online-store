@@ -17,7 +17,7 @@ const ProductDetails = (props) => {
    */
   useEffect(() => {
     const getProducts = () => {
-      axios.get(`http://localhost:8000/Products/${id}`)
+      axios.get(`https://fakestoreapi.com/products/${id}`)
         .then((res) => {
           const productData = res.data;
           setData(productData);
