@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/online-store/static/css/main.c3b134e8.chunk.css",
-    "main.js": "/online-store/static/js/main.369be3ca.chunk.js",
-    "main.js.map": "/online-store/static/js/main.369be3ca.chunk.js.map",
+    "main.css": "/online-store/static/css/main.518caba6.chunk.css",
+    "main.js": "/online-store/static/js/main.265a1db0.chunk.js",
+    "main.js.map": "/online-store/static/js/main.265a1db0.chunk.js.map",
     "runtime-main.js": "/online-store/static/js/runtime-main.cb33dc43.js",
     "runtime-main.js.map": "/online-store/static/js/runtime-main.cb33dc43.js.map",
     "static/js/2.357150c8.chunk.js": "/online-store/static/js/2.357150c8.chunk.js",
@@ -10,14 +10,14 @@
     "static/js/3.445fea47.chunk.js": "/online-store/static/js/3.445fea47.chunk.js",
     "static/js/3.445fea47.chunk.js.map": "/online-store/static/js/3.445fea47.chunk.js.map",
     "index.html": "/online-store/index.html",
-    "static/css/main.c3b134e8.chunk.css.map": "/online-store/static/css/main.c3b134e8.chunk.css.map",
+    "static/css/main.518caba6.chunk.css.map": "/online-store/static/css/main.518caba6.chunk.css.map",
     "static/js/2.357150c8.chunk.js.LICENSE.txt": "/online-store/static/js/2.357150c8.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/online-store/static/media/marcus-loke-xXJ6utyoSw0-unsplash (1).edbee42e.jpg"
+    "static/media/index.css": "/online-store/static/media/marcus-loke-xXJ6utyoSw0-unsplash.edbee42e.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.cb33dc43.js",
     "static/js/2.357150c8.chunk.js",
-    "static/css/main.c3b134e8.chunk.css",
-    "static/js/main.369be3ca.chunk.js"
+    "static/css/main.518caba6.chunk.css",
+    "static/js/main.265a1db0.chunk.js"
   ]
 }
