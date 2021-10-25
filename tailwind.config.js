@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'hero-background': "url('C:/Users/Deliciouz/Documents/react-projects/online-store/src/assets/marcus-loke-xXJ6utyoSw0-unsplash (1).jpg')"
+        'hero-background': "url('../src/assets/marcus-loke-xXJ6utyoSw0-unsplash.jpg')"
       },
       fontFamily: {
         logoFont: "'Are You Serious', cursive"

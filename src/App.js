@@ -61,18 +61,18 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route exact path="/online-store">
+        <Route exact path="/">
           <Hero />
         </Route>
-        <Route path="/online-store/products">
+        <Route exact path="/products">
           <ProductsNav countCartItems={cartItems.length} />
           <ProductList />
         </Route>
-        <Route path="/online-store/products/:id">
+        <Route path="/products/:id">
           <ProductsNav cartItems={setCartItems} countCartItems={cartItems.length} />
           <ProductDetails onAddToCart={onAddToCart} cartItems={cartItems} />
         </Route>
-        <Route path="/online-store/cart">
+        <Route path="/cart">
           <ProductsNav countCartItems={cartItems.length} />
           <Cart
             onAddToCart={onAddToCart}
@@ -83,11 +83,11 @@ function App() {
             checkout={checkout}
           />
         </Route>
-        <Route path="/online-store/confirmation">
+        <Route path="/confirmation">
           <ProductsNav countCartItems={cartItems.length} />
           <Confirmation getConfirmationNumber={getConfirmationNumber} />
         </Route>
-        <Route path="/online-store/*">
+        <Route path="/*">
           <ProductsNav />
           <NotFound />
         </Route>
